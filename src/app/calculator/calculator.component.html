@@ -1,0 +1,71 @@
+<div class="background-overlay" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' }">
+</div>
+
+<app-result *ngIf="resultVisible" [results]="results"></app-result>
+
+<div *ngIf="calculatorVisible" id="calculator-body">
+    <div class="form-wrap">
+        <form (keydown)="onKeyDown($event)">
+            <div class="step" *ngIf="currentStep === 0">
+                <h1>Get Your ROI estimation from UVeye</h1>
+                <h2>within 60 seconds</h2>
+                <h3>Discover how UVeye's automated vehicle inspection platform can boost your profitability, improve
+                    customer satisfaction, and unlock new revenue opportunities.</h3>
+                <button type="button" class="next-btn" (click)="nextStep()">Let's Get Started</button>
+            </div>
+
+            <div class="step" *ngIf="currentStep === 1">
+                <label for="oem">What's OEM do you mainly partner with?</label>
+                <select [(ngModel)]="formData.oem" name="oem" (ngModelChange)="onOEMChange($event)" required>
+                    <option value="" disabled>Please select</option>
+                    <option *ngFor="let oem of oemService.getOEMs()" [value]="oem">{{ oem }}</option>
+                </select>
+                <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+            </div>
+
+            <div class="step" *ngIf="currentStep === 2">
+                <label for="roPerDay">How many repair orders (ROs) do you get <u>each day</u>?</label>
+                <input type="number" [(ngModel)]="formData.roPerDay" name="roPerDay" placeholder="F.E 40" required
+                    #autoFocusInput />
+                <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+            </div>
+
+            <div class="step" *ngIf="currentStep === 3">
+                <label for="liabilityClaims">How much do you spend each month on policy claims for damages reported by
+                    your clients?</label>
+                <input type="number" [(ngModel)]="formData.liabilityClaims" name="liabilityClaims"
+                    placeholder="F.E $7000" required #autoFocusInput />
+                <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+            </div>
+
+            <div class="step" *ngIf="currentStep === 4">
+                <label for="tradeIns">How many trade-ins and used vehicles do you get each month?</label>
+                <input type="number" [(ngModel)]="formData.tradeIns" name="tradeIns" placeholder="F.E 20" required
+                    #autoFocusInput />
+                <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+            </div>
+
+            <div class="step" *ngIf="currentStep === 5">
+                <label>Where should we send the results to?</label>
+                <input type="text" [(ngModel)]="formData.firstName" name="firstName" placeholder="First name" required
+                    #autoFocusInput />
+                <input type="text" [(ngModel)]="formData.lastName" name="lastName" placeholder="Last name" required />
+                <input type="text" [(ngModel)]="formData.company" name="company" placeholder="Company" required />
+                <input type="text" [(ngModel)]="formData.phone" name="phone" placeholder="Phone number" required />
+                <input type="email" [(ngModel)]="formData.email" name="email" placeholder="Email" required />
+                <button type="button" class="next-btn" [disabled]="!isStepValid(5)" (click)="calculateResults()">
+                    Calculate
+                </button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="(currentStep / 6) * 100"></div>
+                <div class="progress-segments">
+                    <div class="progress-segment" *ngFor="let step of [1, 2, 3, 4, 5, 6]"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

@@ -1,27 +1,52 @@
-# AngularCalculator
+## UVeye ROI Calculator for Car Dealers
+**© All rights reserved to UVeye INC.**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+<img align="right" src="calculator-main.png" alt="calculator-main" width="350">
 
-## Development server
+This is a **dummy version** of the **UVeye ROI Calculator** that estimates the potential Return on Investment for Automotive dealerships, using UVeye's automated vehicle inspection platform.  
+<br>  
+**⚠️ This version of the UVeye ROI Calculator is intended for demonstration purposes only - No real data is transmitted.**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Git Page:**  
+[UVeye ROI Calculator](https://toulouse6.github.io/car-dealers-calculator/)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### **How It Works:**
 
-## Build
+1. **Complete the multi-step form, providing responses to business-related questions.**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. **Upon submission, an ROI estimation will be displayed based on the selected OEM and other inputs.**
 
-## Running unit tests
+3. **This version processes everything locally within the browser, without sending data to any external service.**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+### **Technologies:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Angular**  
+- **TypeScript**  
+- **JavaScript ES6**  
+- **CSS3**  
+- **HTML5**  
+- **jQuery**  
+- **FontAwesome**  
+- **RxJS**  
+- **Bootstrap 5**  
+- **Node.js**  
+- **Webpack**  
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### **Features:**
+
+- **Dynamic Background Images:** Seamlessly updates the background based on the selected OEM.  
+- **Responsive Design:** Fully functional on desktop and mobile devices.  
+- **Real-Time Calculations:** Immediate ROI estimation without page reloads.  
+- **Multi-Step Form:** User-friendly interface for guided input collection.  
+
+---
+
+### **Contributions:**
+
+**Author:** Tal Argaman  
