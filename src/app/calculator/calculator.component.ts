@@ -1,6 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { OEMService } from '../oem.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ResultComponent } from '../result/result.component';
 import { OemKeys } from '../oem.service';
 import { CommonModule } from '@angular/common';
@@ -41,50 +41,52 @@ export class CalculatorComponent {
         if (selectedOEM) {
             const oemData = this.oemService.oemValues[selectedOEM];
             if (oemData) {
-                this.backgroundImage = oemData.image; 
+                this.backgroundImage = oemData.image;
             }
         } else {
-            this.backgroundImage = ''; 
+            this.backgroundImage = '';
         }
     }
 
+
     onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Enter') {
-            event.preventDefault(); 
+            event.preventDefault();  
             if (this.currentStep < 5) {
-                this.nextStep();
+                this.nextStep();  
             } else if (this.currentStep === 5 && this.isStepValid(5)) {
-                this.calculateResults();
+                this.calculateResults();  
             }
         }
     }
     
 
-    // Move to next step
     nextStep(): void {
-        if (this.currentStep === 1) {
-            if (this.formData.oem) {
-                const selectedOEM = this.oemService.oemValues[this.formData.oem as OemKeys];
-                this.backgroundImage = selectedOEM.image || '';  
-            } else {
-                alert('Please select an OEM before proceeding.');
-                return; 
-            }
+        if (!this.isStepValid(this.currentStep)) {
+            return;
         }
-        if (this.currentStep < 5) {
-            this.currentStep++;
+        this.currentStep++;
+        setTimeout(() => this.focusInput(), 0);
+    }
 
-            setTimeout(() => this.focusInput(), 0);
+
+    private focusInput(): void {
+        const inputs = document.querySelectorAll('input, select');
+        const currentInput = Array.from(inputs).find((input) => input === document.activeElement);
+        const currentIndex = Array.from(inputs).indexOf(currentInput as HTMLElement);
+        if (inputs[currentIndex + 1]) {
+            (inputs[currentIndex + 1] as HTMLElement).focus();
         }
     }
 
-    private focusInput(): void {
-        if (this.autoFocusInput) {
-          this.renderer.selectRootElement(this.autoFocusInput.nativeElement).focus();
+    onSubmit(form: NgForm): void {
+        if (this.isStepValid(5)) {
+            this.calculateResults();
+        } else {
+            alert('Please complete all required fields.');
         }
-      }
+    }
 
-    // Check if current step is valid
     isStepValid(step: number): boolean {
         switch (step) {
             case 1:
@@ -92,9 +94,9 @@ export class CalculatorComponent {
             case 2:
                 return this.formData.roPerDay !== null && this.formData.roPerDay > 0;
             case 3:
-                return this.formData.liabilityClaims !== null && this.formData.liabilityClaims > 0;
+                return this.formData.liabilityClaims !== null && this.formData.liabilityClaims >= 0;
             case 4:
-                return this.formData.tradeIns !== null && this.formData.tradeIns > 0;
+                return this.formData.tradeIns !== null && this.formData.tradeIns >= 0;
             case 5:
                 return (
                     this.formData.firstName.trim() !== '' &&
@@ -108,15 +110,12 @@ export class CalculatorComponent {
         }
     }
 
+
     // Calculate the results and display
     calculateResults(): void {
-        if (this.isStepValid(5)) {
-            this.results = this.oemService.calculateROI(this.formData);
-            this.resultVisible = true;
-            this.calculatorVisible = false;
-        } else {
-            alert('Please complete all required fields.');
-        }
+        this.results = this.oemService.calculateROI(this.formData);
+        this.resultVisible = true;
+        this.calculatorVisible = false;
     }
 
 }
