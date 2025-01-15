@@ -10,5 +10,5 @@ import { CalculatorComponent } from "./calculator/calculator.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-calculator';
+  title = 'UVeye ROI Calcultor for Dealerships';
 }
