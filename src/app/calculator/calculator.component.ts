@@ -29,7 +29,7 @@ export class CalculatorComponent {
         email: '',
     };
 
-    backgroundImage: string = '/assets/gen-bg2.png';
+    backgroundImage: string = '/car-dealers-calculator/gen-bg2.png';
     currentStep = 0;
     results: any = null;
     calculatorVisible = true;
