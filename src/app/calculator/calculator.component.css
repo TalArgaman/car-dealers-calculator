@@ -87,6 +87,7 @@ select {
 form label {
     font-size: 1.2rem;
     font-weight: 600;
+    line-height: 1.4;
 }
 
 button {
@@ -141,6 +142,26 @@ button:hover {
     form {
         width: 420px;
     }
+
+    form h1 {
+        font-size: 1.8rem;
+    }
+
+    form h2 {
+        margin-top: -0.8rem;
+        font-size: 1.5rem;
+    }
+
+    form h3 {
+        font-size: 1rem;
+    }
+
+    input,
+    select,
+    form label {
+        font-size: 1rem;
+    }
+
 
 }
 

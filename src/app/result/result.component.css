@@ -175,17 +175,24 @@ hr {
         width: 90%;
     }
 
+    #additionalInfo h5,
     .disclaimer {
         width: 95%;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    h3,
+    h4 {
+        font-size: 1.2rem !important;
     }
 
     .footerDiv .disclaimer-footer {
-        font-size: 0.9rem;
+        font-size: 0.9rem !important;
+        line-height: 1.4;
     }
 
 }
@@ -199,6 +206,10 @@ hr {
     .primary-result,
     .number-box {
         padding: 1rem;
+    }
+
+    .number-box {
+        margin: 9px 0 15px 0;
     }
 
     .disclaimer {
