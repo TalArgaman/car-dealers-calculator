@@ -17,7 +17,7 @@
             </div>
 
             <div class="step" *ngIf="currentStep === 1">
-                <label for="oem">What's OEM do you mainly partner with?</label>
+                <label for="oemSelect">What's OEM do you mainly partner with?</label>
                 <select [(ngModel)]="formData.oem" name="oem" required #oem="ngModel">
                     <option value="" disabled selected>Please select</option>
                     <option *ngFor="let oem of oemService.getOEMs()" [value]="oem">{{ oem }}</option>
@@ -28,7 +28,7 @@
 
             <!-- Step 2 -->
             <div class="step" *ngIf="currentStep === 2">
-                <label for="roPerDay">How many repair orders (ROs) do you get <u>each day</u>?</label>
+                <label for="inputRoPerDay">How many repair orders (ROs) do you get <u>each day</u>?</label>
                 <input type="number" [(ngModel)]="formData.roPerDay" name="roPerDay" #autoFocus required min="1"
                     #roPerDay="ngModel" placeholder="e.g. 40" />
                 <div *ngIf="roPerDay.invalid && roPerDay.touched" class="error">Please enter a valid number of ROs.
@@ -38,7 +38,7 @@
 
             <!-- Step 3 -->
             <div class="step" *ngIf="currentStep === 3">
-                <label for="liabilityClaims">How much do you spend each month on policy claims for damages?</label>
+                <label for="inputLiabilityClaims">How much do you spend each month on policy claims for damages?</label>
                 <input type="number" [(ngModel)]="formData.liabilityClaims" name="liabilityClaims" #autoFocus required
                     min="0" #liabilityClaims="ngModel" placeholder="e.g. 7000" />
                 <div *ngIf="liabilityClaims.invalid && liabilityClaims.touched" class="error">Please enter a valid
@@ -49,7 +49,7 @@
 
             <!-- Step 4 -->
             <div class="step" *ngIf="currentStep === 4">
-                <label for="tradeIns">How many trade-ins and used vehicles do you get each month?</label>
+                <label for="inputTradeIns">How many trade-ins and used vehicles do you get each month?</label>
                 <input type="number" [(ngModel)]="formData.tradeIns" name="tradeIns" #autoFocus required min="0"
                     #tradeIns="ngModel" placeholder="e.g. 20" />
                 <div *ngIf="tradeIns.invalid && tradeIns.touched" class="error">Please enter a valid number.</div>
