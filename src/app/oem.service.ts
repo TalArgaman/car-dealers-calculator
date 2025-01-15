@@ -36,17 +36,17 @@ export class OEMService {
 
     oemValues: Record<OemKeys, OemData> = {
 
-        "Audi": { avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000, image: "https://toulouse6.github.io/car-dealers-calculator/assets/audi-bg2.png", additional: "" },
+        "Audi": { avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000, image: "/assets/audi-bg2.png", additional: "" },
         "Chevrolet": {
             avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 500,
-            image: "https://toulouse6.github.io/car-dealers-calculator/assets/chevy-bg.png",
+            image: "./assets/chevy-bg.png",
             additional: "Chevrolet stores in the UVeye network have saved an average of $189,000 in reconditioning costs, increased vehicle acquisitions from 1-3 to 5-10 per month, and achieved a 30% average rise in gross profit per repair order. They've also seen a 119% increase in alignment sales revenue and reduced policy spending by approximately $4,000 per month after installing UVeye."
         },
-        "Ford": { avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 500, image: "https://toulouse6.github.io/car-dealers-calculator/assets/ford-bg3.png", additional: "" },
-        "GMC": { avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 750, image: "https://toulouse6.github.io/car-dealers-calculator/assets/gmc-bg4.png", additional: "" },
+        "Ford": { avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 500, image: "assets/ford-bg3.png", additional: "" },
+        "GMC": { avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 750, image: "car-dealers-calculator/assets/gmc-bg4.png", additional: "" },
         "Cadillac": {
             avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000,
-            image: "https://toulouse6.github.io/car-dealers-calculator/assets/cadillac-bg4.png",
+            image: "/car-dealers-calculator/assets/cadillac-bg4.png",
             additional: "Cadillac stores within the UVeye network have experienced a 16% increase in average revenue, a 17% rise in average gross profit, and an additional $166,000 in monthly profits."
         },
         "Ram": { avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 750, image: "https://toulouse6.github.io/car-dealers-calculator/assets/ram-bg.png", additional: "" },
