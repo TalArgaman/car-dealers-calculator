@@ -36,7 +36,7 @@ export class OEMService {
 
     oemValues: Record<OemKeys, OemData> = {
 
-        "Audi": { avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000, image: "https://toulouse6.github.io/car-dealers-calculator/assets/audi-bg2.png", additional: "" },
+        "Audi": { avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000, image: "./src/assets/audi-bg2.png", additional: "" },
         "Chevrolet": {
             avgPolicyClaimsReduction: "70%", avgSavingsInTradeIns: 500,
             image: "https://toulouse6.github.io/car-dealers-calculator/assets/chevy-bg.png",
