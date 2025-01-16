@@ -1,4 +1,3 @@
-<!-- Background -->
 <div class="background-overlay" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' }"></div>
 
 <app-result *ngIf="resultVisible" [results]="results"></app-result>
@@ -16,15 +15,18 @@
                 <button type="button" class="next-btn" (click)="nextStep()">Let's Get Started</button>
             </div>
 
+            <!-- Step 1 -->
             <div class="step" *ngIf="currentStep === 1">
                 <label for="oemSelect">What's OEM do you mainly partner with?</label>
-                <select [(ngModel)]="formData.oem" name="oem" required #oem="ngModel">
-                    <option value="" disabled selected>Please select</option>
+                <select [(ngModel)]="formData.oem" name="oem" required #oem="ngModel" (ngModelChange)="onOEMChange($event)">
+                    <option value="" disabled>Please select</option>
                     <option *ngFor="let oem of oemService.getOEMs()" [value]="oem">{{ oem }}</option>
                 </select>
+                
                 <div *ngIf="oem.invalid && oem.touched" class="error">Please select an OEM.</div>
                 <button type="button" [disabled]="oem.invalid" class="next-btn" (click)="nextStep()">Next</button>
             </div>
+
 
             <!-- Step 2 -->
             <div class="step" *ngIf="currentStep === 2">
@@ -38,7 +40,8 @@
 
             <!-- Step 3 -->
             <div class="step" *ngIf="currentStep === 3">
-                <label for="inputLiabilityClaims">How much do you spend each month on policy claims for damages?</label>
+                <label for="inputLiabilityClaims">How much do you spend each month on policy claims for
+                    damages?</label>
                 <input type="number" [(ngModel)]="formData.liabilityClaims" name="liabilityClaims" #autoFocus required
                     min="0" #liabilityClaims="ngModel" placeholder="e.g. 7000" />
                 <div *ngIf="liabilityClaims.invalid && liabilityClaims.touched" class="error">Please enter a valid

@@ -18,7 +18,7 @@ export class CalculatorComponent {
     @ViewChild('autoFocusInput', { static: false }) autoFocusInput!: ElementRef;
 
     formData = {
-        oem: '',
+        oem: '' as OemKeys | null,
         roPerDay: null,
         liabilityClaims: null,
         tradeIns: null,
@@ -29,7 +29,7 @@ export class CalculatorComponent {
         email: '',
     };
 
-    backgroundImage: string = './assets/gen-bg2.png';
+    backgroundImage: string = 'assets/gen-bg2.png';
     currentStep = 0;
     results: any = null;
     calculatorVisible = true;
@@ -37,7 +37,9 @@ export class CalculatorComponent {
 
     constructor(public oemService: OEMService, private renderer: Renderer2) { }
 
+
     onOEMChange(selectedOEM: OemKeys | null): void {
+        console.log('OEM Selected:', selectedOEM);
         if (selectedOEM) {
             const oemData = this.oemService.oemValues[selectedOEM];
             if (oemData) {
@@ -49,17 +51,18 @@ export class CalculatorComponent {
     }
 
 
+
     onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Enter') {
-            event.preventDefault();  
+            event.preventDefault();
             if (this.currentStep < 5) {
-                this.nextStep();  
+                this.nextStep();
             } else if (this.currentStep === 5 && this.isStepValid(5)) {
-                this.calculateResults();  
+                this.calculateResults();
             }
         }
     }
-    
+
 
     nextStep(): void {
         if (!this.isStepValid(this.currentStep)) {
@@ -90,7 +93,7 @@ export class CalculatorComponent {
     isStepValid(step: number): boolean {
         switch (step) {
             case 1:
-                return this.formData.oem !== '';
+                return this.formData.oem !== null;
             case 2:
                 return this.formData.roPerDay !== null && this.formData.roPerDay > 0;
             case 3:
@@ -109,7 +112,6 @@ export class CalculatorComponent {
                 return true;
         }
     }
-
 
     // Calculate the results and display
     calculateResults(): void {
