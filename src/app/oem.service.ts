@@ -7,6 +7,7 @@ interface OemData {
     additional: string;
 }
 
+// OEM Keys
 export type OemKeys =
     | "Audi"
     | "Chevrolet"
@@ -34,6 +35,7 @@ export type OemKeys =
 })
 export class OEMService {
 
+    // OEM Values
     oemValues: Record<OemKeys, OemData> = {
 
         "Audi": { avgPolicyClaimsReduction: "80%", avgSavingsInTradeIns: 1000, image: "assets/audi-bg2.png", additional: "" },
@@ -83,15 +85,17 @@ export class OEMService {
     };
 
 
+    // Get OEM
     getOEMs(): OemKeys[] {
         return Object.keys(this.oemValues) as OemKeys[];
     }
 
 
+    // Calculation
     calculateROI(formData: any): any {
         const selectedOEM = this.oemValues[formData.oem as OemKeys];
 
-        const roPerMonth = formData.roPerDay * 25; // Assuming 25 working days
+        const roPerMonth = formData.roPerDay * 25; // 25 working days
         const savingsInClaims = formData.liabilityClaims * (parseFloat(selectedOEM.avgPolicyClaimsReduction) / 100);
         const savingsInTradeIns = formData.tradeIns * selectedOEM.avgSavingsInTradeIns;
         const monthlyPotentialIncreaseInROs = roPerMonth * 30;

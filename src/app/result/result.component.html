@@ -1,4 +1,6 @@
 <div id="results-wrapper">
+
+    <!-- Header -->
     <div class="result-header">
         <h1>Here are your estimated results</h1>
         <h5 class="disclaimer" id="disclaimer">
@@ -8,10 +10,12 @@
         </h5>
     </div>
 
+    <!-- Addtional Info -->
     <div *ngIf="results.additional" id="additionalInfo">
         <h5>{{ results.additional }}</h5>
     </div>
 
+    <!-- Result Box -->
     <div class="result-box">
 
         <div class="primary">
@@ -27,6 +31,7 @@
                         for services like wheel restoration and dent repair.</b></p>
             </div>
 
+            <!-- Footer Discalimer -->
             <div class="footerDiv">
                 <h5 class="disclaimer-footer">
                     UVeye's system doesn’t just prevent losses—it opens new opportunities. By providing dealerships with
@@ -43,7 +48,7 @@
 
         </div>
 
-
+        <!-- Number Box -->
         <div>
             <div class="number-box">
                 <h3>Estimated Monthly Increase in ROs:<br><b>${{ results.monthlyPotentialIncreaseInROs?.toLocaleString()

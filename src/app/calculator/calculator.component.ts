@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 })
 export class CalculatorComponent {
 
+
+    // Auto Focus
     @ViewChild('autoFocusInput', { static: false }) autoFocusInput!: ElementRef;
 
     formData = {
@@ -35,9 +37,12 @@ export class CalculatorComponent {
     calculatorVisible = true;
     resultVisible: boolean = false;
 
+
+    // Constructor
     constructor(public oemService: OEMService, private renderer: Renderer2) { }
 
 
+    // OEM Select
     onOEMChange(selectedOEM: OemKeys | null): void {
         console.log('OEM Selected:', selectedOEM);
         if (selectedOEM) {
@@ -52,6 +57,7 @@ export class CalculatorComponent {
 
 
 
+    // Next via Enter
     onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -64,6 +70,7 @@ export class CalculatorComponent {
     }
 
 
+    // Next Step
     nextStep(): void {
         if (!this.isStepValid(this.currentStep)) {
             return;
@@ -73,6 +80,7 @@ export class CalculatorComponent {
     }
 
 
+    // Focus Input
     private focusInput(): void {
         const inputs = document.querySelectorAll('input, select');
         const currentInput = Array.from(inputs).find((input) => input === document.activeElement);
@@ -82,6 +90,8 @@ export class CalculatorComponent {
         }
     }
 
+
+    // Submittion
     onSubmit(form: NgForm): void {
         if (this.isStepValid(5)) {
             this.calculateResults();
@@ -90,6 +100,7 @@ export class CalculatorComponent {
         }
     }
 
+    // Validation
     isStepValid(step: number): boolean {
         switch (step) {
             case 1:
@@ -113,7 +124,7 @@ export class CalculatorComponent {
         }
     }
 
-    // Calculate the results and display
+    // Calculate results & display
     calculateResults(): void {
         this.results = this.oemService.calculateROI(this.formData);
         this.resultVisible = true;

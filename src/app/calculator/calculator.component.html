@@ -1,10 +1,16 @@
+<!-- Background Overlay -->
 <div class="background-overlay" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' }"></div>
 
+
+<!-- Results -->
 <app-result *ngIf="resultVisible" [results]="results"></app-result>
 
+<!-- Calculator -->
 <div *ngIf="calculatorVisible" id="calculator-body">
+
     <div class="form-wrap">
 
+        <!-- Form -->
         <form #form="ngForm" (ngSubmit)="onSubmit(form)" (keydown)="onKeyDown($event)">
 
             <!-- Step 0 -->
@@ -18,11 +24,12 @@
             <!-- Step 1 -->
             <div class="step" *ngIf="currentStep === 1">
                 <label for="oemSelect">What's OEM do you mainly partner with?</label>
-                <select [(ngModel)]="formData.oem" name="oem" required #oem="ngModel" (ngModelChange)="onOEMChange($event)">
+                <select [(ngModel)]="formData.oem" name="oem" required #oem="ngModel"
+                    (ngModelChange)="onOEMChange($event)">
                     <option value="" disabled>Please select</option>
                     <option *ngFor="let oem of oemService.getOEMs()" [value]="oem">{{ oem }}</option>
                 </select>
-                
+
                 <div *ngIf="oem.invalid && oem.touched" class="error">Please select an OEM.</div>
                 <button type="button" [disabled]="oem.invalid" class="next-btn" (click)="nextStep()">Next</button>
             </div>
@@ -62,6 +69,8 @@
             <!-- Step 5 -->
             <div class="step" *ngIf="currentStep === 5">
                 <label>Where should we send the results to?</label>
+
+                <!-- Copntact form -->
                 <input type="text" [(ngModel)]="formData.firstName" name="firstName" #autoFocus required
                     #firstName="ngModel" placeholder="First name" />
                 <div *ngIf="firstName.invalid && firstName.touched" class="error">First name is required.</div>
@@ -82,6 +91,7 @@
                     placeholder="Email" />
                 <div *ngIf="email.invalid && email.touched" class="error">Please enter a valid email address.</div>
 
+                <!-- Submit button -->
                 <button type="submit" [disabled]="form.invalid" class="next-btn">Calculate</button>
             </div>
 
