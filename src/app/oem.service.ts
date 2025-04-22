@@ -100,8 +100,8 @@ export class OEMService {
         const savingsInTradeIns = formData.tradeIns * selectedOEM.avgSavingsInTradeIns;
         const monthlyPotentialIncreaseInROs = roPerMonth * 30;
 
-        const monthlyPotentialNetProfit = savingsInClaims + savingsInTradeIns - 6300;
-        const monthlyROI = (savingsInClaims + savingsInTradeIns) / 6300;
+        const monthlyPotentialNetProfit = savingsInClaims + savingsInTradeIns - 12600;
+        const monthlyROI = (savingsInClaims + savingsInTradeIns) / 12600;
 
         return {
             oem: formData.oem,
